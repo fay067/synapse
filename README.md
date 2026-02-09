@@ -97,14 +97,9 @@ python scripts/train_policy.py \
 
 ### Required Data Files
 
-**TODO: Please specify the exact data files needed:**
+1. **Trajectory data** (optional, can rollout on your own): `data/raw/d4rl_typed_data_splited_into_trajectories_{ENV_NAME}.npy`
 
-1. **Raw trajectory data**: `data/raw/d4rl_typed_data_splited_into_trajectories_{ENV_NAME}.npy`
-   - Format: [Please describe the data format]
-   - Expected keys in the dictionary: [List the keys]
-   - Data source: [Where to obtain this data]
-
-2. **Pre-trained checkpoints** (optional):
+2. **Pre-trained checkpoints**:
    - Location: `checkpoints/{ENV_NAME}/`
    - Format: TensorFlow checkpoint files (`.ckpt`, `.meta`, `.index`)
 
