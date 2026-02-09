@@ -1,0 +1,91 @@
+# Synapse Benchmark - Required Python Packages
+# Python 3.8 required (TensorFlow 1.15 compatibility)
+# CUDA 11.2-11.3 recommended for GPU support
+
+# ============================================================================
+# Core Scientific Computing
+# ============================================================================
+numpy==1.22.2
+scipy==1.5.2
+pandas==1.4.1
+
+# ============================================================================
+# Deep Learning - TensorFlow
+# ============================================================================
+# Using NVIDIA's TensorFlow build (supports newer CUDA)
+nvidia-tensorflow==1.15.5+nv21.2
+tensorflow-estimator==1.15.1
+tensorflow-probability==0.8.0
+
+# TensorFlow dependencies
+absl-py==1.0.0
+astor==0.8.1
+astunparse==1.6.3
+gast==0.2.2
+google-pasta==0.2.0
+grpcio==1.70.0
+h5py==2.10.0
+Keras-Applications==1.0.8
+Keras-Preprocessing==1.1.2
+Markdown==3.3.6
+opt-einsum==3.3.0
+protobuf==3.20.3
+tensorboard==2.14.0
+termcolor==1.1.0
+wrapt==1.13.3
+
+# ============================================================================
+# Deep Learning - PyTorch (required by d3rlpy)
+# ============================================================================
+torch==2.4.1
+triton==3.0.0
+
+# ============================================================================
+# Reinforcement Learning
+# ============================================================================
+gym==0.26.2
+gym-notices==0.0.4
+stable-baselines3==2.4.1
+Shimmy==2.0.0
+
+# Offline RL
+d3rlpy==2.6.2
+
+# ============================================================================
+# Utilities
+# ============================================================================
+PyYAML==6.0
+tqdm==4.67.1
+cloudpickle==2.0.0
+
+# ============================================================================
+# Optional: Visualization and Analysis
+# ============================================================================
+matplotlib==3.7.5
+seaborn==0.11.2
+tensorboardX==2.6.2.2
+
+# ============================================================================
+# INSTALLATION INSTRUCTIONS
+# ============================================================================
+# 
+# 1. Create Python 3.8 environment:
+#    conda create -n synapse python=3.8
+#    conda activate synapse
+#
+# 2. Install CUDA and cuDNN (for GPU support):
+#    - CUDA 11.2 or 11.3 recommended
+#    - cuDNN 8.1.0
+#
+# 3. Install nvidia-pyindex first (for nvidia-tensorflow):
+#    pip install nvidia-pyindex
+#
+# 4. Install packages:
+#    pip install -r requirements.txt
+#
+# 5. Verify installation:
+#    python -c "import tensorflow as tf; print('TensorFlow:', tf.__version__)"
+#    python -c "import torch; print('PyTorch:', torch.__version__)"
+#    python -c "import d3rlpy; print('d3rlpy:', d3rlpy.__version__)"
+#
+# ============================================================================

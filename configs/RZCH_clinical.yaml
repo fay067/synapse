@@ -1,0 +1,57 @@
+# Synapse Benchmark Configuration - RZCH Clinical Cohort
+
+environment:
+  name: "RZCH_clinical"
+  window_size: 10
+  action_dim: 1
+  action_bound: 1.0
+  max_episode_length: 500
+
+data:
+  raw_data_path: "data/raw/d4rl_typed_data_splited_into_trajectories_RZCH_clinical.npy"
+  checkpoint_dir: "checkpoints/RZCH_clinical"
+  results_dir: "results"
+  output_dir: "outputs"
+
+training:
+  gamma: 0.995
+  random_seed: 2599
+  max_episodes: 300
+  repeat: 1
+  buffer_size_sac: 2000000
+  buffer_size_ope: 10250
+  minibatch_size_sac: 256
+  minibatch_size_ope: 64
+  ope_learning_rate: 0.0007
+  ope_ds: 1000
+  ope_dr: 0.95
+  code_size: 8
+  beta: 0.1
+  beta_perc: 0.3
+  num_ope_models: 1
+  exploration: 0.3
+
+policy_learning:
+  algorithm: "CQL"
+  batch_size: 256
+  gamma: 0.99
+  actor_learning_rate: 0.0003
+  critic_learning_rate: 0.0003
+  temp_learning_rate: 0.0001
+  alpha_learning_rate: 0.0001
+  tau: 0.005
+  n_critics: 2
+  initial_temperature: 1.0
+  initial_alpha: 1.0
+  alpha_threshold: 10.0
+  conservative_weight: 5.0
+  n_action_samples: 10
+
+hardware:
+  cuda_visible_devices: "0"
+  gpu_memory_allow_growth: true
+
+logging:
+  tensorboard: true
+  save_frequency: 10
+  log_frequency: 1

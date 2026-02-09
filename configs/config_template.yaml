@@ -1,0 +1,70 @@
+# Synapse Benchmark Configuration Template
+
+# Environment Configuration
+environment:
+  name: "RZCH_clinical"  # Options: RZCH_clinical, E395_clinical, NU5U_clinical, 6KOZ_clinical, AC27_clinical
+  window_size: 10  # Observation window size
+  action_dim: 1
+  action_bound: 1.0
+  max_episode_length: 500
+
+# Data Paths
+data:
+  raw_data_path: "data/raw/d4rl_typed_data_splited_into_trajectories_{ENV_NAME}.npy"
+  checkpoint_dir: "checkpoints/{ENV_NAME}"
+  results_dir: "results"
+  output_dir: "outputs"
+
+# Training Hyperparameters
+training:
+  # General
+  gamma: 0.995
+  random_seed: 2599
+  max_episodes: 300
+  repeat: 1
+  
+  # Buffer sizes
+  buffer_size_sac: 2000000
+  buffer_size_ope: 10250
+  
+  # Batch sizes
+  minibatch_size_sac: 256
+  minibatch_size_ope: 64
+  
+  # OPE/Model specific
+  ope_learning_rate: 0.0007
+  ope_ds: 1000
+  ope_dr: 0.95
+  code_size: 8
+  beta: 0.1
+  beta_perc: 0.3
+  num_ope_models: 1
+  exploration: 0.3
+
+# Policy Learning (CQL/d3rlpy configuration)
+policy_learning:
+  algorithm: "CQL"  # Options: CQL, PPO, A2C, etc.
+  batch_size: 256
+  gamma: 0.99
+  actor_learning_rate: 0.0003
+  critic_learning_rate: 0.0003
+  temp_learning_rate: 0.0001
+  alpha_learning_rate: 0.0001
+  tau: 0.005
+  n_critics: 2
+  initial_temperature: 1.0
+  initial_alpha: 1.0
+  alpha_threshold: 10.0
+  conservative_weight: 5.0
+  n_action_samples: 10
+
+# Hardware Configuration
+hardware:
+  cuda_visible_devices: "0"
+  gpu_memory_allow_growth: true
+
+# Logging
+logging:
+  tensorboard: true
+  save_frequency: 10  # Save every N episodes
+  log_frequency: 1  # Log every N episodes
